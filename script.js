@@ -1,8 +1,13 @@
 // Countdown Timer
-const targetDate = new Date("2026-02-25T18:30:00+07:00").getTime();
+const targetDate = Date.UTC(2026, 1, 25, 11, 30, 0);
 const updateCountdown = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+const now = new Date().getTime();
+const distance = targetDate - now;
+
+  if (distance <= 0) {
+    clearInterval(updateCountdown);
+    return;
+  }
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -13,6 +18,7 @@ const updateCountdown = setInterval(() => {
   document.getElementById("hours").innerText = hours;
   document.getElementById("minutes").innerText = minutes;
   document.getElementById("seconds").innerText = seconds;
+}, 1000);
 
   if (distance < 0) {
     clearInterval(updateCountdown);
