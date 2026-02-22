@@ -1,5 +1,5 @@
 // Countdown Timer
-const targetDate = new Date("2026-02-25T18:30").getTime();
+const targetDate = new Date("2026-02-25T18:30:00+07:00").getTime();
 const updateCountdown = setInterval(() => {
   const now = new Date().getTime();
   const distance = targetDate - now;
